@@ -2,18 +2,22 @@
   "name": "reacthookpractice",
   "version": "1.0.0",
   "description": "practice",
+  "homepage": "https://Satyanaryan-parida.github.io/useState",
+  "author": "sonu",
+  "license": "ISC",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
-    "test": "jest"
+    "test": "jest",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
-  "author": "sonu",
-  "license": "ISC",
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "parcel": "^2.15.4"
   }
 }
