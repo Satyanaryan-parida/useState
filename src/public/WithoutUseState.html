@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WithoutUseState Example</title>
+
+  <!-- Prism.js CSS (Theme) -->
+  <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.min.css" rel="stylesheet"/>
+
+  <!-- Prism.js Core + JSX support -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-jsx.min.js"></script>
+  <style>
+    body{
+        user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <pre><code class="language-jsx">
+import colors from "../utils/colordata";
+
+const WithoutUseState = () =>{
+    // change color function
+    let index = 0;
+    let color = colors[index].name;
+    let colorCode = colors[index].hex;
+
+    function changeColor(){
+        index = (index+1)%colors.length;
+        color = colors[index].name;
+        colorCode = colors[index].hex;
+        console.log(`from "WithoutUseState"{Component} color Name "${color}" => colorCode "${colorCode}" => indexNumber ${index}`)
+    }
+
+    // component data
+    return (
+        &lt;div id="WithoutuseState"&gt;
+            &lt;h1 className="heading firstHeading"&gt;Without useState&lt;/h1&gt;
+            &lt;div className="changecolorbox1"&gt;
+                &lt;span&gt;
+                    i love {color} color
+                &lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div className="btn1 btn" onClick={changeColor}&gt;{color}&lt;/div&gt;
+        &lt;/div&gt;
+    )
+}
+
+export default WithoutUseState;
+    </code></pre>
+  </div>
+</body>
+</html>

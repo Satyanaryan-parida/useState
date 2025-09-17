@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WithUseState</title>
+    <style>
+      code {
+        user-select: none;
+        font-family: monospace;
+        white-space: pre-wrap;
+      }
+      span.color {
+        font-weight: bold;
+      }
+    </style>
+
+    <!-- Prism CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Prism JS -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-jsx.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <pre><code id="myCode" class="language-jsx">
+import { useState } from "react";
+import colors from "../utils/colordata";
+
+const WithUseState = () =&gt; {
+  const [index, setIndex] = useState(0);
+  const [color, setColor] = useState("Deep Blue");
+  const [colorCode, setColorCode] = useState("#003f5c");
+  function changeColor() {
+    const nextIndex = (index + 1) % colors.length;
+    setIndex(nextIndex);
+    setColor(colors[nextIndex].name);
+    setColorCode(colors[nextIndex].hex);
+    console.log(
+      `from "useState"{Component} color Name "${colors[nextIndex].name}" =&gt; colorCode "${colors[nextIndex].hex}" =&gt; indexNumber ${nextIndex}`
+    );
+  }
+  return (
+    &lt;div id="WithuseState"&gt;
+      &lt;h1 className="heading SecondHeading"&gt;With useState&lt;/h1&gt;
+      &lt;div className="changecolorbox2"&gt;
+        &lt;span&gt;
+          i love &lt;strong style={{ color: colorCode }}&gt;{color}&lt;/strong&gt; color
+        &lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div className="btn2 btn" onClick={changeColor} style={{ color: colorCode }}&gt;
+        {color}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default WithUseState;
+      </code></pre>
+    </div>
+
+    <script>
+      const codeEl = document.getElementById("myCode");
+
+      // Highlight hex codes
+      codeEl.innerHTML = codeEl.innerHTML.replace(
+        /(#(?:[0-9a-fA-F]{3}){1,2})/g,
+        '<span class="color" style="color:$1;">$1</span>'
+      );
+    </script>
+  </body>
+</html>
